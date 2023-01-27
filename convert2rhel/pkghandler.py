@@ -153,6 +153,8 @@ def call_yum_cmd(
     # Without the release package installed, dnf can't determine the modularity platform ID.
     if system_info.version.major == 8:
         cmd.append("--setopt=module_platform_id=platform:el8")
+    elif system_info.version.major == 9:
+        cmd.append("--setopt=module_platform_id=platform:el9")
 
     repos_to_enable = []
     if isinstance(enable_repos, list):

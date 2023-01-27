@@ -56,7 +56,10 @@ class DnfTransactionHandler(TransactionHandlerBase):
         """Create a new instance of the dnf.Base() class."""
         self._base = pkgmanager.Base()
         self._base.conf.substitutions["releasever"] = system_info.releasever
-        self._base.conf.module_platform_id = "platform:el8"
+        if system_info.version.major == 9:
+            self._base.conf.module_platform_id = "platform:el8"
+        else:
+            self._base.conf.module_platform_id = "platform:el9"
 
         # Keep the downloaded files after the transaction to prevent internet
         # issues in the second run of this class.

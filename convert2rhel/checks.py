@@ -430,6 +430,8 @@ def get_rhel_supported_kmods():
     ]
     if system_info.version.major == 8:
         basecmd.append("--setopt=module_platform_id=platform:el8")
+    elif system_info.version.major == 9:
+        basecmd.append("--setopt=module_platform_id=platform:el9")
 
     for repoid in system_info.get_enabled_rhel_repos():
         basecmd.extend(("--repoid", repoid))

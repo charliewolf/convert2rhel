@@ -494,6 +494,8 @@ def download_pkg(
 
     if system_info.version.major == 8:
         cmd.append("--setopt=module_platform_id=platform:el8")
+    elif system_info.version.major == 9:
+        cmd.append("--setopt=module_platform_id=platform:el9")
 
     cmd.append(pkg)
 
